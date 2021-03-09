@@ -18,11 +18,12 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/txtMail"
+        android:id="@+id/mail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Mail"
-        android:textSize="20dp" />
+        android:hint="Correo"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/txtComentario"
@@ -37,6 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Eniar Comentario" />
+
+
 
 
 </LinearLayout>

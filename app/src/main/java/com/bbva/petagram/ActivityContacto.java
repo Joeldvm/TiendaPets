@@ -27,7 +27,7 @@ public class ActivityContacto extends AppCompatActivity {
     ProgressDialog pdialog = null;
     Context context = null;
     Session sesion = null;
-    String textMessage, correo, contraseña;
+    String textMessage, correo, contraseña, maildest;
     EditText comentarios;
 
     @Override
@@ -37,6 +37,7 @@ public class ActivityContacto extends AppCompatActivity {
 
         Button sendmail = (Button) findViewById(R.id.boton);
         EditText comentarios = (EditText) findViewById(R.id.txtComentario);
+        EditText mail = (EditText) findViewById(R.id.mail);
 
         sendmail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,8 +46,9 @@ public class ActivityContacto extends AppCompatActivity {
                 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                 StrictMode.setThreadPolicy(policy);
                 textMessage = comentarios.getText().toString();
-                correo = "joeldvm@gmail.com";
-                contraseña = "qazwsx123";
+                correo = "origenMail@gmail.com";
+                contraseña = "abc123";
+                maildest = mail.getText().toString();
 
                 Properties prop = new Properties();
                 prop.put("mail.smtp.host", "smtp.googlemail.com");
@@ -69,7 +71,7 @@ public class ActivityContacto extends AppCompatActivity {
                         Message mesage = new MimeMessage(sesion);
                         mesage.setFrom(new InternetAddress(correo));
                         mesage.setSubject("Prueba Mail Android");
-                        mesage.setRecipients(Message.RecipientType.TO, InternetAddress.parse("elenavera257@gmail.com"));
+                        mesage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(maildest));
                         mesage.setContent(textMessage,"text/html; charset=utf-8");
                         Transport.send(mesage);
                     }
